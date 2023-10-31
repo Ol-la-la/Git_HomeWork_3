@@ -1,4 +1,4 @@
-def get_mask_card(list_of_data: str) -> str:
+def get_mask_card(list_of_data: list[str]) -> str:
     """
     Получаем номер карты и выводим в нужном формате
     """

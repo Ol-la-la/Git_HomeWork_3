@@ -1,7 +1,7 @@
 from scr.masks import get_mask_card, get_mask_score
 
 
-def checking_number(name_number_card: str) -> str:
+def checking_number(name_number_card: str) -> list[str] | str:
     """
     Получаем исходные данные с номером карты или счета.
     Преобразовываем их в нужный нам формат.
@@ -19,5 +19,7 @@ def checking_number(name_number_card: str) -> str:
 def get_datatime(data_time: str) -> str:
     """
     Преобразовывает дату в нужный формат
+    :param : Дата для изменения
+    :return: Отформатированная дата
     """
     return f"{data_time[8:10]}.{data_time[5:7]}.{data_time[:4]}"
