@@ -23,5 +23,5 @@ if __name__ == "__main__":
         {"id": 615064591, "state": "CANCELED", "date": "2018-10-14T08:21:33.419441"},
     ]
     print(get_list_dict(user_dicts))
-    print(get_list_data_dict(user_dicts))
+    print(get_list_data_dict(user_dicts, True))
     main()
