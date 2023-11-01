@@ -1,9 +1,9 @@
-def get_mask_card(list_of_data: list[str] | str) -> str:
+def get_mask_card(list_of_data: str) -> str:
     """
     Получаем номер карты и выводим в нужном формате
     """
-    number_card = list_of_data[-1]
-    card_name = " ".join(list_of_data[0:-1])
+    number_card = list_of_data.split()[-1]
+    card_name = " ".join(list_of_data.split()[0:-1])
     return f"{card_name} {number_card[:4]} {number_card[5:7]}** **** {number_card[-4:]}"
 
 
