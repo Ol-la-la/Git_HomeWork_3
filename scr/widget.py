@@ -1,7 +1,7 @@
 from scr.masks import get_mask_card, get_mask_score
 
 
-def checking_number(name_number_card: str) -> str:
+def checking_number(name_number_card: str) -> list[str] | str:
     """
     Получаем исходные данные с номером карты или счета.
     Преобразовываем их в нужный нам формат.
@@ -11,7 +11,7 @@ def checking_number(name_number_card: str) -> str:
     if len(number_card) == 20:
         return get_mask_score(number_card)
     elif len(number_card) == 16:
-        return get_mask_card(name_number_card)
+        return get_mask_card(list_of_data)
     else:
         return "Введены неверные данные"
 
