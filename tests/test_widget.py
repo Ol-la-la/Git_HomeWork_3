@@ -16,4 +16,3 @@ def test_get_datatime():
 )
 def test_checking_number(n, expected_result):
     assert checking_number(n) == expected_result
-
