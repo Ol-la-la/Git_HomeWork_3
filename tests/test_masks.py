@@ -6,6 +6,4 @@ def test_get_mask_score():
 
 
 def test_get_mask_card():
-    assert (get_mask_card("Master Card 7000792289606361")
-            == "Master Card 7000 92** **** 6361"
-            )
+    assert get_mask_card("Master Card 7000792289606361") == "Master Card 7000 92** **** 6361"
