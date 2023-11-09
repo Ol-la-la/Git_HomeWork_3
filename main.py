@@ -1,6 +1,6 @@
 from scr.processing import get_list_data_dict, get_list_dict
 from scr.widget import checking_number, get_datatime
-from generator.generators import filter_by_currency, transaction_descriptions, transactions, card_number_generator
+from scr.generators import filter_by_currency, transaction_descriptions, transactions, card_number_generator
 
 
 def main():

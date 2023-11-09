@@ -1,6 +1,6 @@
 import pytest
 
-from generator.generators import card_number_generator, filter_by_currency, transaction_descriptions
+from scr.generators import card_number_generator, filter_by_currency, transaction_descriptions
 
 
 @pytest.fixture
