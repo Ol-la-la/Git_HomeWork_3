@@ -1,8 +1,8 @@
 import json
-import os
+from typing import Any
 
 
-def get_operations_json(path_name: str) -> dict:
+def get_operations_json(path_name: str) -> Any:
     """
     Преобразовывает файл json и возвращает список словарей, содержащий данные об операциях
     :return: list[dict]
@@ -10,26 +10,23 @@ def get_operations_json(path_name: str) -> dict:
     try:
         with open(path_name, encoding="utf-8") as f:
             data = json.load(f)
-            return data
     except FileNotFoundError:
         print(f"File {path_name} not found.")
-        return {}
+        data = []
+    except json.decoder.JSONDecodeError:
+        print(f"File {path_name} is not json")
+        data = []
+    return data
 
 
-def transaction_currency(transaction: dict) -> float:
+def transaction_currency(transaction: dict) -> float | Any:
     """
     Возвращает сумму транзакции или ошибку, если транзакция выполнена не в рублях
     :param transaction: dict
     :return: float
     """
-    for item in transaction:
-        if item["operationAmount"]["currency"]["code"] == "RUB":
-            return float(item["operationAmount"]["amount"])
+    if transaction["operationAmount"]["currency"]["code"] == "RUB":
+        s = transaction["operationAmount"]["amount"]
+        return s
+    else:
         raise ValueError("Транзакция выполнена не в рублях. Укажите транзакцию в рублях")
-
-
-if __name__ == '__main__':
-    path_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-    path_ = os.path.join(path_dir, 'data', 'operations.json')
-    transactions = get_operations_json(path_)
-    print(transaction_currency(transactions))

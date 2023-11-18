@@ -1,8 +1,9 @@
 import os
 from datetime import datetime
+
 import pytest
 
-from scr.decorators import my_function, log
+from scr.decorators import log, my_function
 
 
 def test_my_function():
@@ -35,10 +36,13 @@ def test_log(arg_1, arg_2, expected_result):
     assert log_mes == expected_log
 
 
-@pytest.mark.parametrize("arg_1, arg_2, expected_result",
-                         [(2, 5, " my_foo ok"),
-                          (1, "r",
-                           " my_foo error: unsupported operand type(s) for +: 'int' and 'str'. Inputs: (1, 'r') {}")])
+@pytest.mark.parametrize(
+    "arg_1, arg_2, expected_result",
+    [
+        (2, 5, " my_foo ok"),
+        (1, "r", " my_foo error: unsupported operand type(s) for +: 'int' and 'str'. Inputs: (1, 'r') {}"),
+    ],
+)
 def test_console_log(capsys, arg_1, arg_2, expected_result):
     @log()
     def my_foo(x: int, y: int) -> int:
