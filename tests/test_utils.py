@@ -21,9 +21,7 @@ def test_get_not_file_json():
     Тестируем исключение, если файл json не найден
     :return: ошибка
     """
-    with pytest.raises(FileNotFoundError):
-        get_operations_json("test1 data")
-        raise FileNotFoundError
+    assert get_operations_json("1234") == []
 
 
 def test_transaction_currency():
@@ -33,4 +31,3 @@ def test_transaction_currency():
     assert transaction_currency({"operationAmount": {"amount": 100, "currency": {"code": "RUB"}}}) == 100
     with pytest.raises(ValueError):
         transaction_currency({"operationAmount": {"amount": 100, "currency": {"code": "USD"}}})
-        raise ValueError
