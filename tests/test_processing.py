@@ -1,4 +1,5 @@
 import pytest
+
 from scr.processing import get_list_data_dict, get_list_dict
 
 
