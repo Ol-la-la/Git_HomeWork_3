@@ -75,7 +75,3 @@ def card_number_generator(start: int, stop: int) -> Generator:
         x = 16 - len(str(i))
         card_num = f'{"0" * x}{i}'
         yield card_num[:4] + " " + card_num[4:8] + " " + card_num[-8:-4] + " " + card_num[-4:]
-
-
-for card_number in card_number_generator(1, 1):
-    print(card_number)
