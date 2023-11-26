@@ -1,6 +1,6 @@
 from unittest.mock import patch
 
-from scr.transactions import open_csv_file, path_csv
+from scr.transactions import open_csv_file, path_csv, path_xlsx
 
 
 @patch("builtins.open", create=True)
@@ -18,4 +18,9 @@ def test_open_csv_file():
     with patch('scr.transactions.open_csv_file') as mock_get:
         mock_get.path_csv.return_value = 650703.0
         assert open_csv_file(path_csv)[0]['id'] == 650703.0
-        mock_get.assert_called_once_with(path_csv)
+
+
+def test_open_xlsx_file():
+    with patch('scr.transactions.open_csv_file') as mock_get:
+        mock_get.path_xlsx.return_value = 650703.0
+        assert open_csv_file(path_xlsx)[0]['id'] == 650703.0

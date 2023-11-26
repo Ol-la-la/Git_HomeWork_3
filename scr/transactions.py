@@ -36,5 +36,5 @@ def open_csv_file(path_csv_xlsx: str) -> list[dict] | str:
 
 
 if __name__ == "__main__":
-    pprint(open_csv_file(path_csv))
-    # pprint(open_csv_file(path_xlsx))
+    # pprint(open_csv_file(path_csv))
+    pprint(open_csv_file(path_xlsx))
