@@ -1,12 +1,20 @@
 import os
 from pprint import pprint
-from typing import Any
 
 import numpy as np
 import pandas as pd
 
+path_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+path_csv = os.path.join(path_dir, "data", "transactions.csv")
+path_xlsx = os.path.join(path_dir, "data", "transactions_excel.xlsx")
 
-def get_csv_file(path_csv_xlsx: str) -> list[dict] | Any:
+
+def open_csv_file(path_csv_xlsx: str) -> list[dict] | str:
+    """
+    Считываем файл csv или xlsx и возвращаем список словарей
+    :param path_csv_xlsx: путь до файла csv или xlsx
+    :return: список словарей или сообщение об ошибке пути.
+    """
     path_user = str(path_csv_xlsx)
     if path_user.endswith(".csv"):
         reader = pd.read_csv(path_user, sep=";")
@@ -28,8 +36,5 @@ def get_csv_file(path_csv_xlsx: str) -> list[dict] | Any:
 
 
 if __name__ == "__main__":
-    path_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-    path_csv = os.path.join(path_dir, "data", "transactions.csv")
-    path_xlsx = os.path.join(path_dir, "data", "transactions_excel.xlsx")
-    pprint(get_csv_file(path_csv))
-    # pprint(get_csv_file(path_xlsx))
+    pprint(open_csv_file(path_csv))
+    # pprint(open_csv_file(path_xlsx))

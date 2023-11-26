@@ -16,6 +16,6 @@ def test_open_csv_file_not_file(filename):
 
 def test_open_csv_file():
     with patch('scr.transactions.open_csv_file') as mock_get:
-        mock_get.path_csv.return_value = '2023-09-05T11:30:32Z'
-        assert open_csv_file(path_csv)[0]['date'] == '2023-09-05T11:30:32Z'
+        mock_get.path_csv.return_value = 650703.0
+        assert open_csv_file(path_csv)[0]['id'] == 650703.0
         mock_get.assert_called_once_with(path_csv)
