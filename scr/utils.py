@@ -1,5 +1,5 @@
-import logging
 import json
+import logging
 from typing import Any
 
 
@@ -11,13 +11,13 @@ def get_operations_json(path_name: str) -> Any:
     try:
         with open(path_name, encoding="utf-8") as f:
             data = json.load(f)
-            log_utils('Файл считывается корректно', 'INFO')
+            log_utils("Файл считывается корректно", "INFO")
     except FileNotFoundError:
         print(f"File {path_name} not found.")
         data = []
-        log_utils('Вы пытаетесь обратиться к несуществующему файлу', 'ERROR')
+        log_utils("Вы пытаетесь обратиться к несуществующему файлу", "ERROR")
     except json.decoder.JSONDecodeError:
-        log_utils('Ошибка формата файла', 'ERROR')
+        log_utils("Ошибка формата файла", "ERROR")
         print(f"File {path_name} is not json")
         data = []
     return data
@@ -30,18 +30,18 @@ def transaction_currency(transaction: dict) -> float | Any:
     :return: float
     """
     if transaction["operationAmount"]["currency"]["code"] == "RUB":
-        log_utils('Функция работает корректно', 'INFO')
+        log_utils("Функция работает корректно", "INFO")
         s = transaction["operationAmount"]["amount"]
         return s
     else:
-        log_utils('Произошла ошибка транзакции. Транзакция выполнена не в рублях', 'ERROR')
+        log_utils("Произошла ошибка транзакции. Транзакция выполнена не в рублях", "ERROR")
         raise ValueError("Транзакция выполнена не в рублях. Укажите транзакцию в рублях")
 
 
 def log_utils(log_message: str, log_level: str) -> Any:
     logger = logging.getLogger(__name__)
-    file_handler = logging.FileHandler('utils.log', 'w', encoding="utf-8")
-    file_formatter = logging.Formatter('%(asctime)s %(levelname)s %(name)s: %(message)s')
+    file_handler = logging.FileHandler("utils.log", "w", encoding="utf-8")
+    file_formatter = logging.Formatter("%(asctime)s %(levelname)s %(name)s: %(message)s")
     file_handler.setFormatter(file_formatter)
     logger.addHandler(file_handler)
     logger.propagate = True
