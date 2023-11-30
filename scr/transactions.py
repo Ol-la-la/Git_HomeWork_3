@@ -1,6 +1,7 @@
 import os
 import re
 from pprint import pprint
+from typing import Any
 
 import numpy as np
 import pandas as pd
@@ -55,7 +56,7 @@ def get_search_operation(transaction: list[dict], meaning: str) -> list[dict]:
     return transaction_list
 
 
-def get_filter_dict(transactions: list[dict] | str, category: dict) -> dict:
+def get_filter_dict(transactions: list[dict[Any, Any]], category: dict) -> dict:
     """
     Функция принимает на вход список словарей с данными о банковских операциях и
     словарь категорий операций, и возвращать словарь с названиями категорий и
